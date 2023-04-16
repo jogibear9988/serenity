@@ -10,6 +10,7 @@
 #include <AK/IPv6Address.h>
 #include <AK/URLParser.h>
 #include <LibWeb/Bindings/Intrinsics.h>
+#include <LibWeb/FileAPI/Blob.h>
 #include <LibWeb/URL/URL.h>
 
 namespace Web::URL {
@@ -108,6 +109,42 @@ bool URL::can_parse(JS::VM&, String const& url, Optional<String> const& base)
 
     // 3. Return true.
     return true;
+}
+
+// https://w3c.github.io/FileAPI/#dfn-createObjectURL
+WebIDL::ExceptionOr<JS::NonnullGCPtr<String>> URL::create_Object_URL(JS::VM&, FileAPI::Blob object)
+{
+    // 1. Let store be the user agent’s blob URL store.
+
+    // 2. Let url be the result of generating a new blob URL.
+
+    // 3. Let entry be a new blob URL entry consisting of object and the current settings object.
+
+    // 4. Set store[url] to entry.
+
+    // 5. Return url.
+}
+
+// https://w3c.github.io/FileAPI/#dfn-revokeObjectURL
+WebIDL::ExceptionOr<void> URL::revoke_Object_URL(JS::VM&, String const& url)
+{
+    // 1. Let url record be the result of parsing url.
+
+    // 2. If url record’s scheme is not "blob", return.
+
+    // 3. Let origin be the origin of url record.
+
+    // 4. Let settings be the current settings object.
+
+    // 5. If origin is not same origin with settings’s origin, return.
+
+    // 6. Remove an entry from the Blob URL Store for url.
+
+    // 6.1. Let store be the user agent’s blob URL store;
+
+    // 6.2. Let url string be the result of serializing url.
+
+    // 6.3. Remove store[url string].
 }
 
 // https://url.spec.whatwg.org/#dom-url-href

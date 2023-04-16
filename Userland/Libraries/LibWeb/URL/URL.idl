@@ -1,3 +1,4 @@
+#import <FileAPI/Blob.idl>
 #import <URL/URLSearchParams.idl>
 
 // https://url.spec.whatwg.org/#url
@@ -6,6 +7,8 @@ interface URL {
     constructor(USVString url, optional USVString base);
 
     static boolean canParse(USVString url, optional USVString base);
+    static USVString createObjectURL(Blob object);
+    static undefined revokeObjectURL(USVString url);
 
     stringifier attribute USVString href;
     readonly attribute USVString origin;

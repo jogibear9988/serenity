@@ -10,6 +10,7 @@
 
 #include <AK/URL.h>
 #include <LibWeb/Bindings/PlatformObject.h>
+#include <LibWeb/FileAPI/Blob.h>
 #include <LibWeb/URL/URLSearchParams.h>
 #include <LibWeb/WebIDL/ExceptionOr.h>
 
@@ -25,6 +26,8 @@ public:
     virtual ~URL() override;
 
     static bool can_parse(JS::VM&, String const& url, Optional<String> const& base = {});
+    static WebIDL::ExceptionOr<JS::NonnullGCPtr<String>> create_Object_URL(JS::VM&, FileAPI::Blob object);
+    static WebIDL::ExceptionOr<void> revoke_Object_URL(JS::VM&, String const& url);
 
     WebIDL::ExceptionOr<String> href() const;
     WebIDL::ExceptionOr<void> set_href(String const&);
